@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About-us</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+        :root {
+            --green: #27ae60;
+            --dark-color: #219150;
+            --black: #444;
+            --light-color: #666;
+            --border: .1rem solid rgba(0, 0, 0, .1);
+            --border-hover: .1rem solid var(--black);
+            --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: all .2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            overflow-x: hidden;
+            scroll-padding-top: 5rem;
+            scroll-behavior: smooth;
+        }
+
+        html::-webkit-scrollbar {
+            width: 1rem;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background: var(--black);
+        }
+
+        section {
+            padding: 5rem 9%;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .heading::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 100%;
+            height: .01rem;
+            background: rgba(0, 0, 0, .1);
+            z-index: -1;
+        }
+
+        .heading span {
+            font-size: 3rem;
+            padding: .5rem 2rem;
+            color: var(--black);
+            background: #fff;
+            border: var(--border);
+        }
+
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: .9rem 3rem;
+            border-radius: .5rem;
+            color: #fff;
+            background: var(--green);
+            font-size: 1.7rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background: var(--dark-color);
+        }
+
+        .header .header-1 {
+            background: #fff;
+            padding: 1.5rem 9%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .header-1 .logo {
+            font-size: 2.5rem;
+            font-weight: bolder;
+            color: var(--black);
+        }
+
+        .header .header-1 .logo i {
+            color: var(--green);
+        }
+
+        .header .header-1 .search-form {
+            width: 50rem;
+            height: 5rem;
+            border: var(--border);
+            overflow: hidden;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            border-radius: .5rem;
+        }
+
+        .header .header-1 .search-form input {
+            font-size: 1.6rem;
+            padding: 0 1.2rem;
+            height: 100%;
+            width: 100%;
+            text-transform: none;
+            color: var(--black);
+        }
+
+        .header .header-1 .search-form label {
+            font-size: 2.5rem;
+            padding-right: 1.5rem;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        .header .header-1 .search-form label:hover {
+            color: var(--green);
+        }
+
+        .header .header-1 .icons div,
+        .header .header-1 .icons a {
+            font-size: 2.5rem;
+            margin-left: 1.5rem;
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        .header .header-1 .icons div:hover,
+        .header .header-1 .icons a:hover {
+            color: var(--green);
+        }
+
+        #search-btn {
+            display: none;
+        }
+
+        .header .header-2 {
+            background: var(--green);
+        }
+
+        .header .header-2 .navbar {
+            text-align: center;
+        }
+
+        .header .header-2 .navbar a {
+            color: #fff;
+            display: inline-block;
+            padding: 1.2rem;
+            font-size: 1.7rem;
+        }
+
+        .header .header-2 .navbar a:hover {
+            background: var(--dark-color);
+        }
+
+        .header .header-2.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+
+        }
+
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            border: var(--border-hover);
+            height: 4rem;
+            width: 4rem;
+            color: var(--black);
+            background: #fff;
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 2rem;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: var(--black);
+            color: #fff;
+        }
+
+         .footer .credit {
+            border-top: var(--border);
+            margin-top: 2rem;
+            padding: 0 1rem;
+            padding-top: 2.5rem;
+            font-size: 2rem;
+            color: var(--light-color);
+            text-align: center;
+        }
+
+        .footer .credit span {
+            color: var(--green);
+        }
+
+         /* media queries  */
+
+        @media (max-width:991px) {
+
+            html {
+                font-size: 55%;
+            }
+
+            .header .header-1 {
+                padding: 2rem;
+            }
+
+            section {
+                padding: 3rem 2rem;
+            }
+
+        }
+
+        @media (max-width:768px) {
+
+            html {
+                scroll-padding-top: 0;
+            }
+
+            body {
+                padding-bottom: 6rem;
+            }
+
+            .header .header-2 {
+                display: none;
+            }
+
+            #search-btn {
+                display: inline-block;
+            }
+
+            .header .header-1 {
+                box-shadow: var(--box-shadow);
+                position: relative;
+            }
+
+            .header .header-1 .search-form {
+                position: absolute;
+                top: -115%;
+                right: 2rem;
+                width: 90%;
+                box-shadow: var(--box-shadow);
+            }
+
+            .header .header-1 .search-form.active {
+                top: 115%;
+            }
+
+            .home .row .content {
+                text-align: center;
+            }
+
+            .home .row .content h3 {
+                font-size: 3.5rem;
+            }
+
+        }
+
+        @media (max-width:450px) {
+
+            html {
+                font-size: 50%;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+
+    <div class="header-1">
+
+        <a href="#" class="logo"> <i class="fas fa-book"></i> BookStore </a>
+
+        <form action="" class="search-form">
+            <input type="search" name="" placeholder="search here..." id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <div id="search-btn" class="fas fa-search"></div>
+        </div>
+        <a href="book_register" class="btn">New Book Register</a>
+
+    </div>
+
+    <div class="header-2">
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <a href="available_books">Books-List</a>
+            <a href="about_us">About-us</a>
+            <a href="contact_us">Contact-us</a>
+        </nav>
+    </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- featured section starts  -->
+
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>About-us</span> </h1>
+
+    <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur perspiciatis dicta provident tempore! Sit quasi doloribus qui eos rem laudantium necessitatibus vitae eum voluptatem. Accusantium perferendis modi molestiae maiores vel esse enim aliquam, est distinctio consectetur reiciendis maxime quisquam labore atque excepturi. Iure placeat laudantium quis similique vero, omnis tempore accusamus beatae autem explicabo, perferendis dolor dolorum. Et reprehenderit quas eos repudiandae minima corrupti aut, quod praesentium pariatur ex perferendis obcaecati ab cupiditate aliquam cumque beatae. Corporis dolor aut vero incidunt ipsa, repellendus culpa fugit nihil eligendi suscipit quidem eum? Libero at ex quidem nemo aliquam recusandae distinctio a repudiandae suscipit nesciunt! Iusto sed quibusdam in? Magni minima unde saepe ab aspernatur eveniet quo asperiores, culpa sed nihil, optio voluptatum error aut quis ea? Doloribus asperiores excepturi, ab deserunt error assumenda iure modi exercitationem quisquam cupiditate adipisci corrupti? Amet, sint sapiente. Architecto enim dolore cum autem tenetur asperiores esse fuga voluptatum eligendi aliquid porro placeat unde reprehenderit commodi tempora quaerat veniam qui eum accusantium adipisci at, distinctio aperiam ipsum. Illo, dicta magnam! Id reprehenderit fugit, minima, earum adipisci ut non fuga numquam quidem sint molestias ipsum enim modi iste corrupti, reiciendis delectus autem cumque! Saepe unde architecto similique? Odio natus obcaecati alias distinctio dignissimos ab autem temporibus dicta vitae eos rerum laudantium, vero cupiditate facilis illum perferendis libero culpa quibusdam aliquid. Neque, repellat veniam adipisci iusto qui iste voluptas at.</h2>
+
+</section>
+
+<!-- featured section ends  -->
+
+
+<section class="footer">
+    <div class="credit"> created by <span>Thomas Shelby </span>copyright ©2024 all rights reserved! </div>
+</section>
+
+
+
+</body>
+
+</html>
