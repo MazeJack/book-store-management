@@ -25,7 +25,7 @@ BookStore Management is a web application designed to simplify inventory and ope
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/MazeJack/Telegram-Bot.git
+   git clone https://github.com/MazeJack/book-store-management.git
 
 2. Database Setup:
 
